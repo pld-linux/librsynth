@@ -1,14 +1,14 @@
 Summary:	Package for Klatt-style speech synthesis
 Summary(pl):	Pakiet do syntezy mowy metod± Klatta
 Name:		librsynth
-Version:	2.2.0
+Version:	2.2.1
 %define	beep_v	1.0
 %define	cmu_v	0.6
 Release:	3
 License:	Free (?)
 Group:		Libraries
 Source0:	http://www.ling.uni-potsdam.de/~moocow/projects/spsyn/%{name}-%{version}.tar.gz
-# Source0-md5:	7f45ae4cb4a5628af3d3435228d07147
+# Source0-md5:	accfaa3566fd6944e15d1864a36a3391
 Source1:	ftp://ftp.cs.cmu.edu/project/fgdata/dict/cmudict.%{cmu_v}.gz
 # Source1-md5:	56010b97507d1bd85e3519707b3511cc
 Source2:	ftp://svr-ftp.eng.cam.ac.uk/pub/comp.speech/dictionaries/beep-%{beep_v}.tar.gz
@@ -114,7 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes README doc/README.{WWW,linux,rsynth} doc/*.doc
+%doc Changes doc/README.{WWW,linux,rsynth} doc/*.doc
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_libdir}/dict
