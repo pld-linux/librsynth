@@ -4,7 +4,7 @@ Name:		librsynth
 Version:	2.2.0
 %define	beep_v	1.0
 %define	cmu_v	0.6
-Release:	2
+Release:	3
 License:	Free (?)
 Group:		Libraries
 Source0:	http://www.ling.uni-potsdam.de/~moocow/projects/spsyn/%{name}-%{version}.tar.gz
@@ -13,6 +13,7 @@ Source2:	ftp://svr-ftp.eng.cam.ac.uk/pub/comp.speech/dictionaries/beep-%{beep_v}
 Patch0:		%{name}-build.patch
 URL:		http://www.ling.uni-potsdam.de/~moocow/projects/spsyn/
 BuildRequires:	autoconf >= 2.50
+BuildRequires:	automake
 BuildRequires:	gdbm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -87,7 +88,8 @@ gzip -dc %{SOURCE1} > dict/cmudict
 mv -f beep/beep-%{beep_v} dict/beep
 
 %build
-autoconf
+cp -f /usr/share/automake/config.* .
+%{__autoconf}
 %configure \
 	--with-aDict=dict/cmudict \
 	--with-bDict=dict/beep
