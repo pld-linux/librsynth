@@ -1,0 +1,93 @@
+diff -Nur librsynth-2.2.0.orig/configure.in librsynth-2.2.0/configure.in
+--- librsynth-2.2.0.orig/configure.in	Tue May 21 12:04:34 2002
++++ librsynth-2.2.0/configure.in	Fri Aug 23 23:04:50 2002
+@@ -46,14 +46,6 @@
+ dnl Checks for programs.
+ AC_PROG_CC
+ 
+-if test "$GCC" != yes; then
+-  CFLAGS="-O"
+-else
+-  CFLAGS="-Wall -g"     # debugging
+-  #CFLAGS="-g -O2"       # the default
+-  #CFLAGS="-O2"          # production
+-fi 
+-
+ AC_ISC_POSIX
+ AC_PROG_MAKE_SET
+ AC_PROG_INSTALL
+@@ -180,7 +172,7 @@
+ fi 
+ 
+ AC_CHECK_LIB(socket,socket,XLIBS="-lsocket $XLIBS")
+-AC_CHECK_LIB(nsl,inet_addr,XLIBS="-lnsl $XLIBS")
++AC_CHECK_FUNC(inet_addr,[],[AC_CHECK_LIB(nsl,inet_addr,XLIBS="-lnsl $XLIBS")])
+ AC_CHECK_LIB(X11,XauReadAuth,[
+ XLIBS="$X_LIBS -lX11 $XLIBS"
+ AC_DEFINE(HAVE_LIBX11)
+diff -Nur librsynth-2.2.0.orig/src/Makefile.in librsynth-2.2.0/src/Makefile.in
+--- librsynth-2.2.0.orig/src/Makefile.in	Tue May 21 12:04:56 2002
++++ librsynth-2.2.0/src/Makefile.in	Fri Aug 23 23:07:19 2002
+@@ -195,38 +195,39 @@
+ install : install_bin install_libs install_dicts install_inc ;
+ 
+ install_bin: $(PROGTARGETS)
++	$(INSTALL) -d $(DESTDIR)$(BIN_DIR)
+ 	for f in $^; do \
+-	  $(INSTALL_PROG) $$f $(BIN_DIR) ;\
++	  $(INSTALL_PROG) $$f $(DESTDIR)$(BIN_DIR) ;\
+ 	done
+ 
+ install_dicts: $(DICTTARGETS)
+ ifneq "$(strip $(DICTS))" ""
+-	$(INSTALL) -d $(DICT_DIR)
++	$(INSTALL) -d $(DESTDIR)$(DICT_DIR)
+ 	for f in $(DICTTARGETS); do \
+-	   $(INSTALL_DATA) $$f $(DICT_DIR) ;\
++	   $(INSTALL_DATA) $$f $(DESTDIR)$(DICT_DIR) ;\
+ 	done
+ else
+ 	@echo -e "\n  *\n  * No dictionaries specified to install; skipping.\n  *\n"
+ endif
+ 
+ install_libs : $(LIBTARGETS)
+-	$(INSTALL) -d $(LIB_DIR)
++	$(INSTALL) -d $(DESTDIR)$(LIB_DIR)
+ 	for f in $^ ; do \
+-	  $(INSTALL_DATA) $$f $(LIB_DIR); \
++	  $(INSTALL_DATA) $$f $(DESTDIR)$(LIB_DIR); \
+ 	done
+ 	for f in $(LIBLINKS) ; do \
+-	  rm -f $(LIB_DIR)/$$f ; \
+-	  ( cd $(LIB_DIR) && $(LN_S) $(LIB_DYN) $$f ) ;\
++	  rm -f $(DESTDIR)$(LIB_DIR)/$$f ; \
++	  ( cd $(DESTDIR)$(LIB_DIR) && $(LN_S) $(LIB_DYN) $$f ) ;\
+ 	done
+ 
+ install_inc : $(HSRC_TOP) $(HSRC_SUB)
+-	$(INSTALL) -d $(INC_DIR)
++	$(INSTALL) -d $(DESTDIR)$(INC_DIR)
+ 	for f in $(HSRC_TOP) ; do \
+-	  $(INSTALL_DATA) $$f $(INC_DIR) ;\
++	  $(INSTALL_DATA) $$f $(DESTDIR)$(INC_DIR) ;\
+ 	done
+-	$(INSTALL) -d $(INC_DIR)/$(HFILES_DIR)
++	$(INSTALL) -d $(DESTDIR)$(INC_DIR)/$(HFILES_DIR)
+ 	for f in $(HSRC_SUB) ; do \
+-	  $(INSTALL_DATA) $$f $(INC_DIR)/$(HFILES_DIR) ;\
++	  $(INSTALL_DATA) $$f $(DESTDIR)$(INC_DIR)/$(HFILES_DIR) ;\
+ 	done
+ 
+ 
+diff -Nur librsynth-2.2.0.orig/src/rstruct.c librsynth-2.2.0/src/rstruct.c
+--- librsynth-2.2.0.orig/src/rstruct.c	Tue May 21 11:08:03 2002
++++ librsynth-2.2.0/src/rstruct.c	Fri Aug 23 23:05:07 2002
+@@ -7,6 +7,8 @@
+  * Description: synth-structure manipulators
+ \*-------------------------------------------------------------------*/
+ 
++#include <config.h>
++
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
