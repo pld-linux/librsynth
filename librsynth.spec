@@ -4,7 +4,7 @@ Name:		librsynth
 Version:	2.2.1
 %define	beep_v	1.0
 %define	cmu_v	0.6
-Release:	3
+Release:	4
 License:	Free (?)
 Group:		Libraries
 Source0:	http://www.ling.uni-potsdam.de/~moocow/projects/spsyn/%{name}-%{version}.tar.gz
@@ -32,7 +32,7 @@ do syntezy mowy metod± Klatta.
 Summary:	librsynth header files
 Summary(pl):	Pliki nag³ówkowe librynth
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for librsynth library.
@@ -44,7 +44,7 @@ Pliki nag³ówkowe dla biblioteki librsynth.
 Summary:	librsynth static library
 Summary(pl):	Statyczna biblioteka librsynth
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of librsynth library.
@@ -97,14 +97,16 @@ cp -f /usr/share/automake/config.* .
 	--with-aDict=dict/cmudict \
 	--with-bDict=dict/beep
 
-%{__make}
+%{__make} \
+	LIB_DIR=%{_libdir}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT
+#install -d $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	LIB_DIR=%{_libdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
