@@ -8,8 +8,11 @@ Release:	3
 License:	Free (?)
 Group:		Libraries
 Source0:	http://www.ling.uni-potsdam.de/~moocow/projects/spsyn/%{name}-%{version}.tar.gz
+# Source0-md5:	7f45ae4cb4a5628af3d3435228d07147
 Source1:	ftp://ftp.cs.cmu.edu/project/fgdata/dict/cmudict.%{cmu_v}.gz
+# Source1-md5:	56010b97507d1bd85e3519707b3511cc
 Source2:	ftp://svr-ftp.eng.cam.ac.uk/pub/comp.speech/dictionaries/beep-%{beep_v}.tar.gz
+# Source2-md5:	9f0f6f7a8c3f0910caa29d69846fec8a
 Patch0:		%{name}-build.patch
 URL:		http://www.ling.uni-potsdam.de/~moocow/projects/spsyn/
 BuildRequires:	autoconf >= 2.50
