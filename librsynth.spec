@@ -23,7 +23,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 librsynth is an adaptation of Nick Ing-Simmons' "rsynth" package for
 Klatt-style speech synthesis.
-	
+
 %description -l pl
 librsynth to adaptacja pakietu "rsynth" Nicka Ing-Simmonsa s³u¿±cego
 do syntezy mowy metod± Klatta.
