@@ -1,5 +1,5 @@
 Summary:	Package for Klatt-style speech synthesis
-Summary(pl):	Pakiet do syntezy mowy metod± Klatta
+Summary(pl.UTF-8):   Pakiet do syntezy mowy metodÄ… Klatta
 Name:		librsynth
 Version:	2.2.1
 %define	beep_v	1.0
@@ -24,37 +24,37 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 librsynth is an adaptation of Nick Ing-Simmons' "rsynth" package for
 Klatt-style speech synthesis.
 
-%description -l pl
-librsynth to adaptacja pakietu "rsynth" Nicka Ing-Simmonsa s³u¿±cego
-do syntezy mowy metod± Klatta.
+%description -l pl.UTF-8
+librsynth to adaptacja pakietu "rsynth" Nicka Ing-Simmonsa sÅ‚uÅ¼Ä…cego
+do syntezy mowy metodÄ… Klatta.
 
 %package devel
 Summary:	librsynth header files
-Summary(pl):	Pliki nag³ówkowe librynth
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe librynth
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for librsynth library.
 
-%description devel -l pl
-Pliki nag³ówkowe dla biblioteki librsynth.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe dla biblioteki librsynth.
 
 %package static
 Summary:	librsynth static library
-Summary(pl):	Statyczna biblioteka librsynth
+Summary(pl.UTF-8):   Statyczna biblioteka librsynth
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static version of librsynth library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna wersja biblioteki librsynth.
 
 %package dict-beep
 Summary:	British English Example Pronounciations dictionary
-Summary(pl):	BEEP - przyk³adowy s³ownik wymowy dla brytyjskiej odmiany angielskiego
+Summary(pl.UTF-8):   BEEP - przykÅ‚adowy sÅ‚ownik wymowy dla brytyjskiej odmiany angielskiego
 Version:	%{beep_v}
 License:	non-commercial, for research only
 Group:		Applications/Dictionaries
@@ -63,13 +63,13 @@ Requires:	%{name}
 %description dict-beep
 British English Example Pronounciations dictionary for librsynth.
 
-%description dict-beep -l pl
-BEEP (British English Example Pronounciations) - przyk³adowy s³ownik
-wymowy dla brytyjskiej odmiany jêzyka angielskiego do librsynth.
+%description dict-beep -l pl.UTF-8
+BEEP (British English Example Pronounciations) - przykÅ‚adowy sÅ‚ownik
+wymowy dla brytyjskiej odmiany jÄ™zyka angielskiego do librsynth.
 
 %package dict-cmu
 Summary:	Carnegie Mellon Pronouncing Dictionary (American English)
-Summary(pl):	S³ownik wymowy Carnegie Mellon (amerykañska odmiana angielskiego)
+Summary(pl.UTF-8):   SÅ‚ownik wymowy Carnegie Mellon (amerykaÅ„ska odmiana angielskiego)
 Version:	%{cmu_v}
 License:	Free
 Group:		Applications/Dictionaries
@@ -79,8 +79,8 @@ Requires:	%{name}
 Carnegie Mellon Pronouncing Dictionary (American English) for
 librsynth.
 
-%description dict-cmu -l pl
-S³ownik wymowy Carnegie Mellon (dla amerykañskiej odmiany jêzyka
+%description dict-cmu -l pl.UTF-8
+SÅ‚ownik wymowy Carnegie Mellon (dla amerykaÅ„skiej odmiany jÄ™zyka
 angielskiego) do librsynth.
 
 %prep
