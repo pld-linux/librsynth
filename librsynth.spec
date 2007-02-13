@@ -1,5 +1,5 @@
 Summary:	Package for Klatt-style speech synthesis
-Summary(pl.UTF-8):   Pakiet do syntezy mowy metodą Klatta
+Summary(pl.UTF-8):	Pakiet do syntezy mowy metodą Klatta
 Name:		librsynth
 Version:	2.2.1
 %define	beep_v	1.0
@@ -30,7 +30,7 @@ do syntezy mowy metodą Klatta.
 
 %package devel
 Summary:	librsynth header files
-Summary(pl.UTF-8):   Pliki nagłówkowe librynth
+Summary(pl.UTF-8):	Pliki nagłówkowe librynth
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -42,7 +42,7 @@ Pliki nagłówkowe dla biblioteki librsynth.
 
 %package static
 Summary:	librsynth static library
-Summary(pl.UTF-8):   Statyczna biblioteka librsynth
+Summary(pl.UTF-8):	Statyczna biblioteka librsynth
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -54,7 +54,7 @@ Statyczna wersja biblioteki librsynth.
 
 %package dict-beep
 Summary:	British English Example Pronounciations dictionary
-Summary(pl.UTF-8):   BEEP - przykładowy słownik wymowy dla brytyjskiej odmiany angielskiego
+Summary(pl.UTF-8):	BEEP - przykładowy słownik wymowy dla brytyjskiej odmiany angielskiego
 Version:	%{beep_v}
 License:	non-commercial, for research only
 Group:		Applications/Dictionaries
@@ -69,7 +69,7 @@ wymowy dla brytyjskiej odmiany języka angielskiego do librsynth.
 
 %package dict-cmu
 Summary:	Carnegie Mellon Pronouncing Dictionary (American English)
-Summary(pl.UTF-8):   Słownik wymowy Carnegie Mellon (amerykańska odmiana angielskiego)
+Summary(pl.UTF-8):	Słownik wymowy Carnegie Mellon (amerykańska odmiana angielskiego)
 Version:	%{cmu_v}
 License:	Free
 Group:		Applications/Dictionaries
