@@ -85,7 +85,7 @@ angielskiego) do librsynth.
 
 %prep
 %setup -q -a2
-%patch0 -p1
+%patch -P0 -p1
 
 gzip -dc %{SOURCE1} > dict/cmudict
 mv -f beep/beep-%{beep_v} dict/beep
